@@ -1,7 +1,7 @@
 {
   "name": "everything-claude-code",
-  "version": "1.9.0",
-  "description": "Complete collection of battle-tested Claude Code configs from an Anthropic hackathon winner - agents, skills, hooks, and rules evolved over 10+ months of intensive daily use",
+  "version": "2.0.0",
+  "description": "The complete Claude Code plugin - 36 agents, 128 skills, 69 commands, and production hooks. Consolidates all official Anthropic plugins (pr-review-toolkit, feature-dev, commit-commands, hookify, code-simplifier, security-guidance, frontend-design, explanatory-output-style) into one battle-tested package.",
   "author": {
     "name": "Affaan Mustafa",
     "url": "https://x.com/affaanmustafa"
@@ -14,12 +14,21 @@
     "agents",
     "skills",
     "hooks",
+    "commands",
     "rules",
     "tdd",
     "code-review",
     "security",
     "workflow",
     "automation",
-    "best-practices"
-  ]
+    "best-practices",
+    "pr-review",
+    "feature-dev",
+    "hookify",
+    "frontend-design"
+  ],
+  "commands": "../commands",
+  "skills": "../skills",
+  "agents": "../agents",
+  "hooks": "../hooks/hooks.json"
 }

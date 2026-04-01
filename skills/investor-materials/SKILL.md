@@ -86,6 +86,51 @@ Include:
 - revenue math that does not sum cleanly
 - inflated certainty where assumptions are fragile
 
+## Pitch Deck Structure (10-12 slides)
+
+Recommended flow with guidance per slide:
+1. **Title:** Company name + one-line positioning
+2. **Problem:** Quantify the pain. Use specific market numbers.
+3. **Solution:** Show the product, not a description of it. Screenshots, demo frames, or architecture diagrams.
+4. **Product demo:** Phase 1 (live) vs Phase 2 (funded). Always present as phased if not fully built.
+5. **Market:** TAM with source. Growth rate with source. Key catalyst for "why now."
+6. **Business model:** Revenue layers with year-by-year projections. Show the math.
+7. **Traction:** Working product, users, revenue, waitlist, partnerships. Concrete numbers only.
+8. **Team:** Each founder gets a credibility anchor (prior company, metric, recognition).
+9. **Competitive landscape:** Positioning map or table. Show the gap you fill.
+10. **Ask:** Raise amount, instrument (SAFE/priced), valuation range.
+11. **Milestones / Use of funds:** Timeline from now to Series A. Use of funds must sum exactly.
+12. **Appendix:** Revenue model detail, regulatory strategy, technical architecture.
+
+## Financial Model Requirements
+
+When building or updating financial models:
+- All assumptions must be stated explicitly and separately from projections
+- Include bear/base/bull scenarios (sensitivity analysis)
+- Revenue layers must sum correctly across all timeframes
+- Use of funds must sum to the exact raise amount
+- Include unit economics where possible (cost per user, revenue per customer)
+- Discount rates and growth rates must be sourced or justified
+- Milestone-linked spending: tie spend to specific milestones
+
+## Accelerator Applications
+
+When writing accelerator applications:
+- Follow the specific word/character limits of each program
+- Lead with traction (metrics, users, revenue, recognition)
+- Be specific about what the accelerator adds (network, funding, customers)
+- Never sound desperate. Frame as mutual fit.
+- Keep internal metrics consistent with the deck and model
+
+## Honesty Requirements
+
+These are non-negotiable:
+- Clearly distinguish between what is live/working and what requires funding
+- Never attach revenue figures to things that are not revenue-generating
+- Never claim awards or recognition not actually received
+- "Algorithmic" when the tech is algorithmic, "AI" only when there is actual ML/AI
+- All traction claims must be verifiable
+
 ## Quality Gate
 
 Before delivering:
@@ -94,3 +139,6 @@ Before delivering:
 - assumptions are visible, not buried
 - the story is clear without hype language
 - the final asset is defensible in a partner meeting
+- phase distinctions (live vs funded) are clear
+- no unverifiable claims
+- team roles and titles are correct

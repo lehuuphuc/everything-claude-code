@@ -65,6 +65,30 @@ Default structure:
 5. recommendation
 6. sources
 
+## Domain-Specific Research Context
+
+When researching specific verticals, collect domain-specific signals:
+
+### Prediction Markets
+Key metrics: Volume, open interest, user count, market categories
+Regulatory landscape: CFTC (US), FCA (UK), global patchwork
+Key players: Polymarket, Kalshi, Robinhood (event contracts), Metaculus, Manifold
+
+### DeFi / Structured Products
+Key concepts: Vaults, exotic options, baskets, LP positions, DLMM
+Key players: Cega, Ribbon Finance, Opyn, OrBit Markets
+Chain-specific context matters (Solana vs Ethereum vs L2s)
+
+### AI Agent Security
+Key concepts: Agent permissions, tool poisoning, prompt injection, OWASP LLM Top 10
+Key players: Invariant Labs, Backslash, Dam Secure, Cogent Security, Entire, Pillar Security
+
+### General Research Practices
+- For investor due diligence: produce a 200-300 word dossier with fund overview, relevant investments, thesis alignment, suggested angle, and red flags
+- For competitive analysis: always include "so what" for each finding relative to the user's venture
+- For market sizing: follow TAM/SAM/SOM with explicit growth rate (CAGR with source), key drivers, and key risks
+- For technology research: cover architecture (not marketing), trade-offs, adoption signals (GitHub stars, npm downloads, TVL if DeFi), and integration complexity
+
 ## Quality Gate
 
 Before delivering:
@@ -73,3 +97,5 @@ Before delivering:
 - the recommendation follows from the evidence
 - risks and counterarguments are included
 - the output makes a decision easier
+- no filler paragraphs or generic market commentary
+- contrarian/risk perspective explicitly included

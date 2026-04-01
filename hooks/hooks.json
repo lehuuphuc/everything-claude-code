@@ -116,6 +116,17 @@
           }
         ],
         "description": "Check MCP server health before MCP tool execution and block unhealthy MCP calls"
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/security-reminder.py\"",
+            "timeout": 5
+          }
+        ],
+        "description": "Security pattern reminder: warns about command injection, XSS, and other OWASP patterns in file edits"
       }
     ],
     "PreCompact": [

@@ -202,7 +202,68 @@ Use `content-engine` skill to generate platform-native content, then post via X 
 3. Post via X API using patterns above
 4. Track engagement via public_metrics
 
+## Account Management Operations
+
+Beyond posting, the X API supports account management workflows:
+
+### Check Mentions and Replies
+```python
+# Get mentions for authenticated user
+resp = requests.get(
+    f"https://api.x.com/2/users/{user_id}/mentions",
+    headers=headers,
+    params={
+        "max_results": 10,
+        "tweet.fields": "created_at,public_metrics,in_reply_to_user_id",
+    }
+)
+```
+
+### Track Engagement Metrics
+```python
+# Get tweet metrics
+resp = requests.get(
+    f"https://api.x.com/2/tweets/{tweet_id}",
+    headers=headers,
+    params={"tweet.fields": "public_metrics"}
+)
+metrics = resp.json()["data"]["public_metrics"]
+# Returns: retweet_count, reply_count, like_count, quote_count, impression_count
+```
+
+### Follower/Following Graph Analysis
+```python
+# Get followers
+resp = requests.get(
+    f"https://api.x.com/2/users/{user_id}/followers",
+    headers=headers,
+    params={"max_results": 100, "user.fields": "public_metrics,description"}
+)
+
+# Get following
+resp = requests.get(
+    f"https://api.x.com/2/users/{user_id}/following",
+    headers=headers,
+    params={"max_results": 100, "user.fields": "public_metrics,description"}
+)
+```
+
+## Content Guidelines for X
+
+When posting programmatically, follow these platform norms:
+- Lowercase sentence starts for dev/tech X accounts
+- Proper nouns and acronyms stay capitalized
+- No hashtags (they signal inauthenticity on dev X)
+- No links in tweet body (kills reach). Links in first reply.
+- Hook in first 7 words (mobile fold is brutal)
+- Character limit: 280 chars for free, 25K for Premium
+
+## Safety
+
+Always get user approval before posting. Draft the content and present it for review. Never auto-post without explicit confirmation.
+
 ## Related Skills
 
 - `content-engine` — Generate platform-native content for X
 - `crosspost` — Distribute content across X, LinkedIn, and other platforms
+- `lead-intelligence` — Use X follower graph for warm path discovery

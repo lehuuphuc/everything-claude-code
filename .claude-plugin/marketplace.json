@@ -13,8 +13,8 @@
     {
       "name": "everything-claude-code",
       "source": "./",
-      "description": "The most comprehensive Claude Code plugin — 28+ agents, 116+ skills, 57+ commands, and production-ready hooks for TDD, security scanning, code review, and continuous learning",
-      "version": "1.9.0",
+      "description": "The complete Claude Code plugin — 36 agents, 128 skills, 69 commands. Consolidates all official Anthropic plugins (pr-review-toolkit, feature-dev, commit-commands, hookify, code-simplifier, security-guidance, frontend-design) into one package.",
+      "version": "2.0.0",
       "author": {
         "name": "Affaan Mustafa",
         "email": "me@affaanmustafa.com"

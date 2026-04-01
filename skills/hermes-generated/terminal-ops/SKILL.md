@@ -13,6 +13,7 @@ Use this when the user asks Hermes to fix code, resolve CI failures, run termina
 ## Skill Stack
 
 Pull these imported skills into the workflow when relevant:
+- `continuous-agent-loop` for multi-step execution with scope freezes, recovery gates, and progress checkpoints
 - `agentic-engineering` for scoped decomposition and explicit done conditions
 - `plankton-code-quality` for write-time quality expectations and linter discipline
 - `eval-harness` for pass/fail verification after each change
@@ -42,6 +43,7 @@ Pull these imported skills into the workflow when relevant:
 4. Verify after each meaningful change:
    - rerun the smallest command that proves the fix
    - escalate to the broader build, lint, or test only after the local failure is addressed
+   - if the same proving command keeps failing with the same signature, freeze the broader loop, reduce scope to the failing unit, and stop repeating the same retry
    - review the diff before any commit or push
 5. Push only when the requested state is real:
    - distinguish `changed locally`, `verified locally`, `committed`, and `pushed`
@@ -56,6 +58,7 @@ Pull these imported skills into the workflow when relevant:
 - do not use destructive git commands or revert unrelated local work
 - do not claim `fixed` if the proving command was not rerun
 - do not claim `pushed` if the change only exists locally
+- do not keep rerunning broad verification after the same unchanged failure, narrow the loop or report the blocker
 
 ## Verification
 

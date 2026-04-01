@@ -75,6 +75,63 @@ Delete and rewrite any of these:
 - mix insight with updates, not diary filler
 - use clear section labels and easy skim structure
 
+## Tone Calibration
+
+Match tone to context:
+
+| Context | Tone |
+|---------|------|
+| Technical content | Direct, opinionated, practical. Share what works from experience. |
+| Personal/journey | Honest, reflective. No performative humility, no toxic positivity. |
+| Security content | Urgent but not alarmist. Evidence-based. Show the vulnerability, then the fix. |
+| Community updates | Grateful but not sycophantic. Numbers speak louder than adjectives. |
+| Product launches | Matter-of-fact. Let features speak. No hype language. |
+
+## Approved Voice Patterns
+
+These patterns work well for developer and founder audiences:
+
+- "here's exactly how..."
+- "no fluff."
+- "zero [X]. just [Y]."
+- "the short version:"
+- Direct address: "you want X. here's X."
+- Parenthetical asides for personality and self-awareness (use roughly once every 2-3 paragraphs)
+
+## Platform-Specific Structure
+
+### Technical Guides
+- open with what the reader gets
+- use code or terminal examples in every major section
+- use "Pro tip:" callouts for non-obvious insights
+- end with concrete takeaways as short bullets, not a summary paragraph
+- link to resources at the bottom
+
+### Essays / Opinion Pieces
+- start with tension, contradiction, or a sharp observation
+- keep one argument thread per section
+- use examples that earn the opinion
+
+### Newsletters
+- keep the first screen strong
+- mix insight with updates, not diary filler
+- use clear section labels and easy skim structure
+
+### LinkedIn
+- proper capitalization
+- short paragraphs (2-3 sentences max)
+- first line is the hook (truncates at ~210 chars)
+- professional framing: impact, lessons, takeaways
+- 3-5 hashtags at the bottom only
+
+### X/Twitter Threads
+- each tweet must standalone (people see them individually)
+- hook in first tweet, no "thread:" or "1/" prefix
+- one point per tweet
+- last tweet: CTA or punchline, not "follow for more"
+- 4-7 tweets ideal length
+- no links in tweet body (kills reach). Links in first reply.
+
 ## Quality Gate
 
 Before delivering:
@@ -83,3 +140,7 @@ Before delivering:
 - confirm the voice matches the supplied examples
 - ensure every section adds new information
 - check formatting for the intended platform
+- zero banned patterns in entire document
+- at least 2-3 parenthetical asides for personality (if voice calls for it)
+- examples/evidence before explanation in each section
+- specific numbers used where available

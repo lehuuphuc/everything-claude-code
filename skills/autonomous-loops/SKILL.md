@@ -608,3 +608,135 @@ These patterns compose well:
 | Continuous Claude | AnandChowdhary | credit: @AnandChowdhary |
 | NanoClaw | ECC | `/claw` command in this repo |
 | Verification Loop | ECC | `skills/verification-loop/` in this repo |
+
+---
+
+## 7. Autonomous Agent Harness
+
+**Transform Claude Code into a persistent autonomous agent system** with scheduled operations, persistent memory, computer use, and task queuing. Replaces standalone agent frameworks (Hermes, AutoGPT) by leveraging Claude Code's native capabilities.
+
+### Architecture
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    Claude Code Runtime                        │
+│                                                              │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌─────────────┐ │
+│  │  Crons   │  │ Dispatch │  │ Memory   │  │ Computer    │ │
+│  │ Schedule │  │ Remote   │  │ Store    │  │ Use         │ │
+│  │ Tasks    │  │ Agents   │  │          │  │             │ │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └──────┬──────┘ │
+│       │              │             │                │        │
+│       ▼              ▼             ▼                ▼        │
+│  ┌──────────────────────────────────────────────────────┐    │
+│  │              ECC Skill + Agent Layer                  │    │
+│  └──────────────────────────────────────────────────────┘    │
+│       │              │             │                │        │
+│       ▼              ▼             ▼                ▼        │
+│  ┌──────────────────────────────────────────────────────┐    │
+│  │              MCP Server Layer                        │    │
+│  │  memory    github    exa    supabase    browser-use  │    │
+│  └──────────────────────────────────────────────────────┘    │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### When to Use the Harness (vs simpler loops)
+
+- You want an agent that runs continuously or on a schedule
+- Setting up automated workflows that trigger periodically
+- Building a personal AI assistant that remembers context across sessions
+- Replicating functionality from Hermes, AutoGPT, or similar frameworks
+- Combining computer use with scheduled execution
+
+### Core Component: Persistent Memory
+
+Use Claude Code's built-in memory system enhanced with MCP memory server:
+
+```
+# Short-term: current session context
+Use TodoWrite for in-session task tracking
+
+# Medium-term: project memory files
+Write to ~/.claude/projects/*/memory/ for cross-session recall
+
+# Long-term: MCP knowledge graph
+Use mcp__memory__create_entities for permanent structured data
+Use mcp__memory__create_relations for relationship mapping
+Use mcp__memory__add_observations for new facts about known entities
+```
+
+### Core Component: Scheduled Operations (Crons)
+
+```bash
+# Daily morning briefing
+claude -p "Create a scheduled task: every weekday at 9am, review my GitHub notifications, open PRs, and calendar. Write a morning briefing to memory."
+
+# Continuous learning
+claude -p "Create a scheduled task: every Sunday at 8pm, extract patterns from this week's sessions and update the learned skills."
+```
+
+Useful cron patterns:
+
+| Pattern | Schedule | Use Case |
+|---------|----------|----------|
+| Daily standup | `0 9 * * 1-5` | Review PRs, issues, deploy status |
+| Weekly review | `0 10 * * 1` | Code quality metrics, test coverage |
+| Hourly monitor | `0 * * * *` | Production health, error rate checks |
+| Nightly build | `0 2 * * *` | Run full test suite, security scan |
+
+### Core Component: Remote Dispatch
+
+Trigger Claude Code agents remotely for event-driven workflows:
+
+```bash
+# Trigger from CI/CD pipeline
+claude -p "Build failed on main. Diagnose and fix."
+
+# Trigger from webhook (GitHub webhook -> dispatch -> Claude agent -> fix -> PR)
+```
+
+### Core Component: Task Queue
+
+Manage a persistent queue of tasks that survive session boundaries:
+
+```markdown
+# Task persistence via memory
+Write task queue to ~/.claude/projects/*/memory/task-queue.md
+
+## Active Tasks
+- [ ] PR #123: Review and approve if CI green
+- [ ] Monitor deploy: check /health every 30 min for 2 hours
+- [ ] Research: Find 5 leads in AI tooling space
+
+## Completed
+- [x] Daily standup: reviewed 3 PRs, 2 issues
+```
+
+### Example Harness Workflows
+
+**Autonomous PR Reviewer:**
+```
+Cron: every 30 min during work hours
+1. Check for new PRs on watched repos
+2. For each new PR: pull branch, run tests, review changes
+3. Post review comments via GitHub MCP
+4. Update memory with review status
+```
+
+**Personal Research Agent:**
+```
+Cron: daily at 6 AM
+1. Check saved search queries in memory
+2. Run Exa searches for each query
+3. Summarize new findings, compare against yesterday
+4. Write digest to memory
+5. Flag high-priority items for morning review
+```
+
+### Harness Constraints
+
+- Cron tasks run in isolated sessions (share context only through memory)
+- Computer use requires explicit permission grants
+- Remote dispatch may have rate limits (design crons with appropriate intervals)
+- Keep memory files concise (archive old data rather than growing unbounded)
+- Always verify that scheduled tasks completed successfully

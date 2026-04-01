@@ -159,6 +159,63 @@ Add to your CI pipeline:
 - Missing descriptions on MCP servers
 - Prohibitive instructions correctly flagged as good practice
 
+## Infrastructure Security Operations
+
+Beyond Claude Code config scanning, this skill covers broader infrastructure security hygiene.
+
+### Repository Security Checks
+
+```bash
+# Check Dependabot alerts across repos
+gh api repos/{owner}/{repo}/dependabot/alerts --jq '.[].security_advisory.summary'
+
+# Check for exposed secrets in recent commits
+gh api repos/{owner}/{repo}/secret-scanning/alerts --jq '.[].state'
+
+# Check code scanning alerts (CodeQL)
+gh api repos/{owner}/{repo}/code-scanning/alerts --jq '.[].rule.description'
+```
+
+### API Key Hygiene
+
+Track and rotate API keys on a schedule:
+
+| Category | Rotation Frequency |
+|----------|--------------------|
+| LLM APIs (OpenAI, Anthropic, etc.) | Quarterly |
+| Search APIs (Exa, Brave, Firecrawl) | Quarterly |
+| Social APIs (X, LinkedIn) | On compromise only |
+| Infrastructure (Supabase, GitHub tokens) | Quarterly |
+| Payment (Stripe) | On compromise only |
+| OAuth tokens (Oura, Google) | Auto-refresh |
+
+### Quick Security Audit
+
+1. Check all repos for Dependabot alerts
+2. Check for exposed secrets in recent commits
+3. Verify critical services are responding
+4. Check SSL cert expiry for deployed domains
+5. Review API key scopes (are any over-permissioned?)
+
+### Deep Security Audit
+
+1. Full dependency tree analysis for each repo
+2. API key scope review
+3. Review LaunchAgent/cron configurations for security implications
+4. Check for hardcoded secrets in codebase (beyond .env)
+5. Network exposure audit (what ports are open?)
+6. Review OAuth token scopes and expiry
+7. License compliance check
+
+### Incident Response
+
+If a key is compromised:
+1. Immediately rotate the affected key
+2. Check service logs for unauthorized usage
+3. Review git history for when/how it was exposed
+4. Update `.env` files across all systems
+5. Assess impact and notify stakeholders
+
 ## Links
 
 - **GitHub**: [github.com/affaan-m/agentshield](https://github.com/affaan-m/agentshield)

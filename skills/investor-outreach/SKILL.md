@@ -66,6 +66,63 @@ Include:
 - one new proof point if available
 - the next step
 
+## Cold Email Structure (Detailed)
+
+**Subject line:** Short, specific, no fluff. Reference something the investor actually did or said.
+- Good: "Structured products for prediction markets (Goldman co-founder)"
+- Good: "[Fund Name] thesis + prediction market infrastructure"
+- Bad: "Exciting opportunity in DeFi"
+- Bad: "Partnership inquiry"
+
+**Opening (1-2 sentences):** Reference something specific about the investor. A deal they led, a thesis they published, a tweet they posted. This cannot be generic.
+
+**The pitch (2-3 sentences):** What you are building, why now, and the one metric that proves traction.
+
+**The ask (1 sentence):** Specific, low-friction. "Would you have 20 minutes this week?" or "Would it make sense to share our memo?"
+
+**Sign-off:** Name, title, one credibility line.
+
+### Email Tone Rules
+- Direct. No begging. No "I know you're busy" or "I'd be honored if you..."
+- Confident but not arrogant. Let facts do the heavy lifting.
+- Short. Under 150 words total. Investors get 200+ emails/day.
+- Zero em dashes. Zero corporate speak.
+
+## Warm Intro Requests (Detailed)
+
+Template for requesting intros through mutual connections:
+```
+hey [mutual name],
+
+quick ask. i see you know [target name] at [company].
+i'm building [your product] which [1-line relevance to target].
+would you be open to a quick intro? happy to send you a
+forwardable blurb.
+
+[your name]
+```
+
+## Direct Cold Outreach Template
+
+```
+hey [target name],
+
+[specific reference to their recent work/post/announcement].
+i'm [your name], building [product]. [1 line on why this is
+relevant to them specifically].
+
+[specific low-friction ask].
+
+[your name]
+```
+
+## Anti-Patterns (Never Do)
+- Generic templates with no personalization
+- Long paragraphs explaining your whole company
+- Multiple asks in one message
+- Fake familiarity ("loved your recent talk!" without specifics)
+- Bulk-sent messages with visible merge fields
+
 ## Quality Gate
 
 Before delivering:
@@ -74,3 +131,6 @@ Before delivering:
 - there is no fluff or begging language
 - the proof point is concrete
 - word count stays tight
+- under 150 words (cold email) or 200 words (follow-up)
+- correct branding and terminology
+- numbers match canonical sources
