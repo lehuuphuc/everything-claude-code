@@ -31,34 +31,44 @@ Pull these imported skills into the workflow when relevant:
 1. Resolve the exact working surface first:
    - use the user-provided absolute repo path when given
    - if the target is not a git repo, do not reach for git-only steps
-   - prefer `/Users/affoon/GitHub/...` over any iCloud or Documents mirror
+   - prefer `$PRIMARY_REPOS_ROOT/...` over any iCloud or Documents mirror
 2. Inspect before editing:
    - read the failing command, file, test, or CI error first
    - check current branch and local state before changing or pushing anything
    - if the prompt already includes loaded-file markers or a compaction summary, use that evidence instead of re-reading blindly
-3. Keep fixes narrow and evidence-led:
+3. Freeze execution mode before editing:
+   - if the user asked for an audit, review, inspection, or explicitly said `do not modify code`, stay read-only until the user changes scope
+   - use logs, diffs, git state, file reads, and other non-writing proving steps to gather evidence
+   - do not apply patches, run codegen, install dependencies, format files, or stage/commit while the task is still read-only
+4. Keep fixes narrow and evidence-led:
    - solve one dominant failure at a time
    - prefer repo-local scripts, package scripts, and checked-in helpers over ad hoc one-liners
    - if a dependency or helper is needed, use `search-first` before writing custom glue
-4. Verify after each meaningful change:
+5. Verify after each meaningful change:
    - rerun the smallest command that proves the fix
    - escalate to the broader build, lint, or test only after the local failure is addressed
    - if the same proving command keeps failing with the same signature, freeze the broader loop, reduce scope to the failing unit, and stop repeating the same retry
    - review the diff before any commit or push
-5. Push only when the requested state is real:
+6. Answer status interrupts before more terminal work:
+   - if the user asks `are you working?`, `did you do it?`, or a low-budget warning appears, stop discovery and answer from the current verified state before running more commands
+   - lead with the explicitly asked repo, branch, or failure state first, especially when the main fix is still unresolved
+   - use exact words like `changed locally`, `verified locally`, `pushed`, `blocked`, or `awaiting verification`
+7. Push only when the requested state is real:
    - distinguish `changed locally`, `verified locally`, `committed`, and `pushed`
    - if push is requested, use a non-interactive git flow and report the branch and result
-6. Report exact status words:
+8. Report exact status words:
    - drafted, changed locally, verified locally, committed, pushed, blocked, awaiting verification
 
 ## Pitfalls
 
 - do not guess the failure from memory when logs or tests can settle it
-- do not work in `/Users/affoon/Documents/...` clones when `/Users/affoon/GitHub/...` exists
+- do not turn an audit-only, review-only, or `do not modify code` request into edits because a fix seems obvious
+- do not work in `$DOCUMENTS_ROOT/...` clones when `$PRIMARY_REPOS_ROOT/...` exists
 - do not use destructive git commands or revert unrelated local work
 - do not claim `fixed` if the proving command was not rerun
 - do not claim `pushed` if the change only exists locally
 - do not keep rerunning broad verification after the same unchanged failure, narrow the loop or report the blocker
+- do not keep exploring after a budget warning or status interrupt when the current repo state can already be reported precisely
 
 ## Verification
 

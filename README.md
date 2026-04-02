@@ -38,7 +38,9 @@
 
 Not just configs. A complete system: skills, instincts, memory optimization, continuous learning, security scanning, and research-first development. Production-ready agents, hooks, commands, rules, and MCP configurations evolved over 10+ months of intensive daily use building real products.
 
-Works across **Claude Code**, **Codex**, **Cowork**, and other AI agent harnesses.
+Works across **Claude Code**, **Codex**, **Cowork**, and other AI agent harnesses, with **Hermes x ECC** now documented as a public preview operator stack.
+
+**New in ECC 2.0 preview:** [Hermes setup guide](docs/HERMES-SETUP.md) · [release notes](docs/releases/2.0.0-preview/release-notes.md) · [launch pack](docs/releases/2.0.0-preview/launch-checklist.md)
 
 ---
 
@@ -83,6 +85,14 @@ This repo is the raw code only. The guides explain everything.
 ---
 
 ## What's New
+
+### v2.0.0 Preview — Hermes x ECC Operator Stack (Apr 2026)
+
+- **Hermes x ECC public preview** — ECC now documents a sanitized Hermes operator setup built around ECC skills, MCPs, hooks, crons, and generated workflow packs.
+- **Launch-ready release pack** — Added release notes, X thread, LinkedIn draft, article outline, launch checklist, and short-form video scripts for same-day distribution.
+- **Cross-harness positioning cleanup** — Public repo metadata now matches the 2.0 direction already reflected in the Claude plugin manifest and internal architecture docs.
+- **Version drift fixed** — Root `package.json`, lockfile, `VERSION`, `.opencode/package.json`, and `AGENTS.md` are back in sync.
+- **Preview boundary made explicit** — Public docs show the setup surface and workflow map first; private auth, secrets, and local operator state remain intentionally out of repo.
 
 ### v1.9.0 — Selective Install & Language Expansion (Mar 2026)
 
@@ -212,7 +222,7 @@ For manual install instructions see the README in the `rules/` folder.
 /plugin list everything-claude-code@everything-claude-code
 ```
 
-✨ **That's it!** You now have access to 28 agents, 119 skills, and 60 commands.
+✨ **That's it!** You now have access to 36 agents, 128 skills, and 69 commands.
 
 ---
 
@@ -1083,9 +1093,9 @@ The configuration is automatically detected from `.opencode/opencode.json`.
 
 | Feature | Claude Code | OpenCode | Status |
 |---------|-------------|----------|--------|
-| Agents | ✅ 28 agents | ✅ 12 agents | **Claude Code leads** |
-| Commands | ✅ 60 commands | ✅ 31 commands | **Claude Code leads** |
-| Skills | ✅ 119 skills | ✅ 37 skills | **Claude Code leads** |
+| Agents | ✅ 36 agents | ✅ 12 agents | **Claude Code leads** |
+| Commands | ✅ 69 commands | ✅ 31 commands | **Claude Code leads** |
+| Skills | ✅ 128 skills | ✅ 37 skills | **Claude Code leads** |
 | Hooks | ✅ 8 event types | ✅ 11 events | **OpenCode has more!** |
 | Rules | ✅ 29 rules | ✅ 13 instructions | **Claude Code leads** |
 | MCP Servers | ✅ 14 servers | ✅ Full | **Full parity** |
@@ -1204,7 +1214,7 @@ ECC is the **first plugin to maximize every major AI coding tool**. Here's how e
 | **Context File** | CLAUDE.md + AGENTS.md | AGENTS.md | AGENTS.md | AGENTS.md |
 | **Secret Detection** | Hook-based | beforeSubmitPrompt hook | Sandbox-based | Hook-based |
 | **Auto-Format** | PostToolUse hook | afterFileEdit hook | N/A | file.edited hook |
-| **Version** | Plugin | Plugin | Reference config | 1.9.0 |
+| **Version** | Plugin | Plugin | Reference config | 2.0.0 preview |
 
 **Key architectural decisions:**
 - **AGENTS.md** at root is the universal cross-tool file (read by all 4 tools)

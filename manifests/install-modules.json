@@ -90,7 +90,6 @@
       "targets": [
         "claude",
         "cursor",
-        "antigravity",
         "codex",
         "opencode"
       ],
@@ -141,7 +140,6 @@
       "targets": [
         "claude",
         "cursor",
-        "antigravity",
         "codex",
         "opencode"
       ],

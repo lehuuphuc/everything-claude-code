@@ -29,7 +29,7 @@ Pull these imported skills into the workflow when relevant:
 
 1. Start with the freshest revenue evidence available:
    - if a live Stripe pull exists, refresh it first
-   - otherwise read `/Users/affoon/.hermes/workspace/business/stripe-sales.md` and `/Users/affoon/.hermes/workspace/business/financial-status.md`
+   - otherwise read `$HERMES_WORKSPACE/business/stripe-sales.md` and `$HERMES_WORKSPACE/business/financial-status.md`
    - always report the snapshot timestamp if the data is not live
 2. Normalize the revenue picture before answering:
    - separate paid sales, failed attempts, successful retries, `$0` invoices, refunds, disputes, and active subscriptions

@@ -1,5 +1,30 @@
 # Changelog
 
+## 2.0.0 - 2026-04-01
+
+### Highlights
+
+- Public ECC 2.0 preview release surface aligned across root package metadata, docs, and release collateral.
+- Hermes is now part of the public ECC story via a sanitized setup guide, generated-skills surface, and operator workflow documentation.
+- Launch pack added for same-day rollout: release notes, X thread, LinkedIn post, article outline, launch checklist, and short-form video scripts.
+- Repo version drift fixed between `package.json`, `package-lock.json`, `.opencode/package.json`, `AGENTS.md`, and `VERSION`.
+
+### New Docs
+
+- `docs/HERMES-SETUP.md` — sanitized public guide for running Hermes with ECC as the operator surface
+- `docs/releases/2.0.0-preview/release-notes.md`
+- `docs/releases/2.0.0-preview/x-thread.md`
+- `docs/releases/2.0.0-preview/linkedin-post.md`
+- `docs/releases/2.0.0-preview/video-shorts.md`
+- `docs/releases/2.0.0-preview/article-outline.md`
+- `docs/releases/2.0.0-preview/launch-checklist.md`
+
+### Positioning
+
+- ECC 2.0 is framed as a cross-harness operating system for agentic work, not only a Claude Code plugin.
+- Hermes is positioned as the opinionated operator shell sitting on top of ECC skills, MCPs, hooks, crons, and workflow assets.
+- The public preview intentionally ships the documented setup and launch assets first; additional private/local integrations can land incrementally.
+
 ## 1.9.0 - 2026-03-20
 
 ### Highlights

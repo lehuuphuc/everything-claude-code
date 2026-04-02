@@ -5,5 +5,5 @@ This directory is reserved for skills distilled from Hermes session data, repeat
 Rules:
 - keep skills specific and evidence-backed
 - prefer reusable operational patterns over one-off tasks
-- mirror from `~/.hermes/skills/generated/` only after the pattern is stable
+- mirror from `$HERMES_HOME/skills/generated/` only after the pattern is stable
 - do not overwrite unrelated ECC skills

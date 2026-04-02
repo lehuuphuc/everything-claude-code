@@ -43,17 +43,17 @@ Pull these companion skills into the workflow when relevant:
    - read the full thread first
    - choose the sender account that matches the project or recipient
    - if the user has not explicitly approved the exact outgoing text, draft first and show the final copy before sending
-   - store approval state with `python3 /Users/affoon/.hermes/scripts/email_guard.py queue ...`
-   - before any send, require `python3 /Users/affoon/.hermes/scripts/email_guard.py approve --id <id>` plus `python3 /Users/affoon/.hermes/scripts/email_guard.py can-send --id <id> --account <account> --recipient <recipient> --subject <subject>`
-   - before any send or reply, run `python3 /Users/affoon/.hermes/scripts/email_guard.py history --recipient <recipient> --subject <subject snippet> --days 45 --json` to catch prior outbound and accidental repeats
+   - store approval state with `python3 $HERMES_HOME/scripts/email_guard.py queue ...`
+   - before any send, require `python3 $HERMES_HOME/scripts/email_guard.py approve --id <id>` plus `python3 $HERMES_HOME/scripts/email_guard.py can-send --id <id> --account <account> --recipient <recipient> --subject <subject>`
+   - before any send or reply, run `python3 $HERMES_HOME/scripts/email_guard.py history --recipient <recipient> --subject <subject snippet> --days 45 --json` to catch prior outbound and accidental repeats
    - if the exact Himalaya send syntax is uncertain, check `himalaya ... --help` or a checked-in helper path before trying a new subcommand
    - compose with `himalaya template send` or `himalaya message send` using file-backed content when possible, not ad hoc heredoc or inline Python raw-MIME wrappers
    - avoid editor-driven flows unless required
 5. If the request mentions attachments or images:
    - resolve the exact absolute file path before broad mailbox searching
    - keep the task on the local send-and-verify path instead of branching into unrelated web or repo exploration
-   - if Mail.app fallback is needed, pass the attachment paths after the body: `osascript /Users/affoon/.hermes/scripts/send_mail.applescript "<sender>" "<recipient>" "<subject>" "<body>" "/absolute/file1" ...`
-6. If the user wants an actual send and Himalaya fails with an IMAP append or save-copy error, a CLI dead end, or a raw-message parser crash, do not immediately resend. First verify whether the message already landed in Sent using the history check or `himalaya envelope list -a <account> -f Sent ...`. If the failure was an invalid command path or a panic before Sent proof exists, report the exact blocked state such as `blocked on invalid himalaya send path` or `blocked on himalaya parser crash` and preserve the draft. Only if there is still no sent copy and the user explicitly approved the send may you fall back to `/Users/affoon/.hermes/scripts/send_mail.applescript`. If the user constrained the method to Himalaya only, report the exact blocked state instead of silently switching tools.
+   - if Mail.app fallback is needed, pass the attachment paths after the body: `osascript $HERMES_HOME/scripts/send_mail.applescript "<sender>" "<recipient>" "<subject>" "<body>" "/absolute/file1" ...`
+6. If the user wants an actual send and Himalaya fails with an IMAP append or save-copy error, a CLI dead end, or a raw-message parser crash, do not immediately resend. First verify whether the message already landed in Sent using the history check or `himalaya envelope list -a <account> -f Sent ...`. If the failure was an invalid command path or a panic before Sent proof exists, report the exact blocked state such as `blocked on invalid himalaya send path` or `blocked on himalaya parser crash` and preserve the draft. Only if there is still no sent copy and the user explicitly approved the send may you fall back to `$HERMES_HOME/scripts/send_mail.applescript`. If the user constrained the method to Himalaya only, report the exact blocked state instead of silently switching tools.
 7. During long-running mailbox work, keep the loop tight: draft -> approval -> send -> Sent proof. Do the next irreversible step first, and do not branch into unrelated transports or searches while the current blocker is unresolved. If a budget warning says 3 or fewer tool calls remain, stop broad exploration and spend the remaining calls on the highest-confidence execution or verification step, or report exact status and next action.
 8. If the user wants sent-mail evidence:
    - verify via `himalaya envelope list -a <account> -f Sent ...` or the account's actual sent folder

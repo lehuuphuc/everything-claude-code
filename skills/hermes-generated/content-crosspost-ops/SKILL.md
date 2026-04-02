@@ -31,8 +31,8 @@ Pull these imported skills into the workflow when relevant:
 ## Support Source Of Truth
 
 Treat these live sources as authoritative for destination support:
-- `/Users/affoon/.hermes/workspace/content/postbridge_publish.py`
-- `/Users/affoon/.hermes/workspace/content/crosspost-verification-latest.md`
+- `$HERMES_WORKSPACE/content/postbridge_publish.py`
+- `$HERMES_WORKSPACE/content/crosspost-verification-latest.md`
 
 Examples in this skill are destination patterns, not a promise that every destination is live right now. If a destination has no current wrapper path or no recent verified publish record, report `unverified capability` or `blocked by unsupported capability` until checked.
 
@@ -52,12 +52,13 @@ Do not flatten these into one label. `PostBridge unsupported` can still mean `br
    - if the user pasted thread requirements, comply with those requirements before drafting
 2. If the request depends on platform capability, API support, or quota behavior, verify it before answering.
    - if the user asks whether PostBridge can handle a destination or format, inspect the real wrapper, configs, or recent publish logs before promising support
-   - treat `/Users/affoon/.hermes/workspace/content/postbridge_publish.py` plus recent verification records as the source of truth for current support
+   - treat `$HERMES_WORKSPACE/content/postbridge_publish.py` plus recent verification records as the source of truth for current support
    - separate the destination question from the transport question, and answer both
    - if there is no current wrapper path or recent proof, report `unverified capability` before drafting
    - if PostBridge is unsupported but a browser path exists, say `PostBridge unsupported, browser path available` instead of flattening the whole destination to `unsupported`
    - if the destination itself is unsupported, say `blocked by unsupported capability` and give the next viable path
    - if the task started as a support question or `did you do it?`, settle that capability or verification answer before drafting or scheduling other destinations
+   - if a budget warning is active or there are 3 or fewer tool turns left, stop expanding capability checks, answer from the current wrapper or verification proof first, then use at most one high-confidence proving step
 3. Extract one core idea and a few specifics. Split multiple ideas into separate posts.
 4. Write native variants instead of reusing the same copy:
    - X: fast hook, minimal framing
@@ -86,9 +87,10 @@ Do not flatten these into one label. `PostBridge unsupported` can still mean `br
    - capture a returned post ID, URL, API response, or an updated verification log
    - when the user asks `did you do it?`, answer with the exact status for each platform: posted, queued, drafted, uploaded-only, blocked, or awaiting verification
    - when the user interrupts with `are you working?`, answer in one sentence with the exact current step or blocker on the explicitly asked destination before more tool use
+   - if a budget warning is already active, do not make another exploratory call before replying to `did you do it?` or `are you working?`
    - lead with the explicitly asked destination first, and include the proof or blocker on that destination before mentioning any secondary platform work
    - if the asked destination is still unresolved, say that first instead of leading with successful side work on other platforms
-   - record every attempt with `/Users/affoon/.hermes/workspace/content/log_crosspost.py` or `/Users/affoon/.hermes/workspace/content/postbridge_publish.py`
+   - record every attempt with `$HERMES_WORKSPACE/content/log_crosspost.py` or `$HERMES_WORKSPACE/content/postbridge_publish.py`
    - if the state is only drafted, uploaded-only, queued, blocked, or pending manual action, report that exact status
 
 ## Pitfalls
@@ -105,10 +107,11 @@ Do not flatten these into one label. `PostBridge unsupported` can still mean `br
 - do not hide an unresolved asked destination behind progress on other supported destinations
 - do not answer `did you do it?` by leading with successful secondary platforms while the explicitly asked destination is still unresolved
 - do not keep scheduling or verifying secondary destinations after a status interrupt while the explicitly asked destination is still unresolved
+- do not keep expanding capability checks after a budget warning when the current wrapper state or verification log already supports a precise status answer
 - do not ignore the user's preference for screenshots or native media over raw links
 
 ## Verification
 
-- `/Users/affoon/.hermes/workspace/content/crosspost-verification-latest.md` reflects the latest attempts
+- `$HERMES_WORKSPACE/content/crosspost-verification-latest.md` reflects the latest attempts
 - each destination has an ID, URL, or explicit failure reason
 - the copy and media logged match what was actually sent

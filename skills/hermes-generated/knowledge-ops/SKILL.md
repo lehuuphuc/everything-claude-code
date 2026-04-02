@@ -31,12 +31,12 @@ Pull these companion skills into the workflow when relevant:
    - do not waste turns re-reading the same files unless the summary is clearly insufficient
 2. Search in a fixed order before saying `not found`, unless the user already named the store:
    - `mcp_supermemory_recall` with a targeted query
-   - grep `/Users/affoon/.hermes/workspace/memory/`
-   - grep `/Users/affoon/.hermes/workspace/` more broadly
+   - grep `$HERMES_WORKSPACE/memory/`
+   - grep `$HERMES_WORKSPACE/` more broadly
    - `session_search` for recent Hermes conversations
-   - grep `/Users/affoon/GitHub/affaans_knowledge_base/` and `/Users/affoon/.hermes/openclaw-home/hub/workspace/memory/` for historical context
+   - grep `$KNOWLEDGE_BASE_ROOT/` and `$OPENCLAW_MEMORY_ROOT/` for historical context
 3. If the user says the answer is in a specific memory store, pivot there immediately after the initial targeted recall:
-   - `openclaw memory` means favor `/Users/affoon/GitHub/affaans_knowledge_base/` and `/Users/affoon/.hermes/openclaw-home/hub/workspace/memory/`
+   - `openclaw memory` means favor `$KNOWLEDGE_BASE_ROOT/` and `$OPENCLAW_MEMORY_ROOT/`
    - `not in this session` means stop digging through the current thread and move to persistent stores instead of re-reading current-session files
 4. Keep the search narrow and evidence-led:
    - reuse names, dates, channels, account names, or quoted phrases from the user
